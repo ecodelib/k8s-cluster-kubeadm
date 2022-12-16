@@ -1,0 +1,15 @@
+apiVersion: kubeadm.k8s.io/v1beta3
+caCertPath: /etc/kubernetes/pki/ca.crt
+discovery:
+  bootstrapToken:
+    apiServerEndpoint: 10.129.0.9:6443
+    token: <generated-token>
+    unsafeSkipCAVerification: true
+  timeout: 5m0s
+  tlsBootstrapToken: <generated-token>
+kind: JoinConfiguration
+nodeRegistration:
+  criSocket: unix:///run/cri-dockerd.sock
+  imagePullPolicy: IfNotPresent
+  name: k8s-work-1..2 #replace with actual worker node name eg k8s-work-2
+  taints: null

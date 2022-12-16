@@ -1,0 +1,15 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: 10.129.0.101
+  bindPort: 6443
+nodeRegistration:
+  name: "k8s-mas-1"
+  criSocket: "/run/cri-dockerd.sock"
+---
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+networking:
+  podSubnet: 10.244.0.0/16
+kubernetesVersion: stable
+controlPlaneEndpoint: 10.129.0.9:6443
